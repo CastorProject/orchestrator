@@ -1,0 +1,15 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+	<!--dynamixel launcher/-->
+	<include file="$(find arm_head_motors)/launch/controller_manager.launch"/>
+	<include file="$(find arm_head_motors)/launch/controller.launch"/>
+
+	<!--ros-onohat servo controllers launcher/-->
+	<include file="$(find opsoro_workbench)/launch/onohat_base.launch"/>
+
+	<!--castor robot nodes/-->
+	<node name="eyes_behavior" pkg="eyes_behavior" type="eyes_manager.py"/>
+	<node name="facial_behavior" pkg="face_motors" type="face_motor.py"/>
+	<node name="motor_behavior" pkg="arm_head_motors" type="motor_manager.py"/>
+	<node name="speaker" pkg="speaker" type="speaker.py"/>
+</launch>
